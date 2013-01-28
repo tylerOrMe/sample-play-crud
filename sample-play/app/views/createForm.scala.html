@@ -1,0 +1,35 @@
+@(carForm: Form[Car], brands: Seq[(String, String)])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) } 
+
+@main {
+    
+    <h1>Add a car</h1>
+    
+    @form(routes.Application.save()) {
+        
+        <fieldset>
+        
+            
+           
+            @select(
+                carForm("brand"), 
+                brands, 
+                '_label -> "Brand", '_default -> "-- Choose a brand --",
+                '_showConstraints -> false
+            )
+            @inputText(carForm("model"), '_label -> "Car model")
+			@inputText(carForm("price"), '_label -> "Introduced price")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this car" class="btn primary"> or 
+            <a href="@routes.Application.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}

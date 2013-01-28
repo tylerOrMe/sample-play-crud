@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the computer list
+GET     /                           controllers.Application.index
+
+# Cars list (look at the default values for pagination parameters)
+GET     /cars                  controllers.Application.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+
+# Add car
+GET     /cars/new              controllers.Application.create
+POST    /cars                  controllers.Application.save
+
+# Edit existing car
+GET     /cars/:id              controllers.Application.edit(id:Long)
+POST    /cars/:id              controllers.Application.update(id:Long)
+
+# Delete a car
+POST    /cars/:id/delete       controllers.Application.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
