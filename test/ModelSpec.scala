@@ -26,7 +26,7 @@ class ModelSpec extends Specification {
     "be updated if needed" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
         
-        Car.update(2, Car(model="The Sandero", brandId=1, price=None))
+        Car.update(2, Car(model="The Sandero", brandId=Some(1), price=None))
         
         val Some(sandero) = Car.findById(2)
         

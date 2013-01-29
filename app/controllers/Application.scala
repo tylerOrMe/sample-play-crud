@@ -4,7 +4,7 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-
+import play.api.data.format.Formats._
 import anorm._
 
 import views._
@@ -28,7 +28,7 @@ object Application extends Controller {
       "id" -> ignored(NotAssigned:Pk[Long]),
       "model" -> nonEmptyText,
       "brand" -> optional(longNumber),
-      "price" -> optional(longNumber)
+      "price" -> optional(of[Double])
     )(Car.apply)(Car.unapply)
   )
   
