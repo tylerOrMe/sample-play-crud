@@ -13,7 +13,7 @@ create table brand (
 create table car (
   id                        bigint not null,
   model                      varchar(255) not null,
-  price                bigint,
+  price                DOUBLE,
   brand_id                bigint,
   constraint pk_car primary key (id))
 ;

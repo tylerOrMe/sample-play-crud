@@ -1,37 +1,25 @@
 @(id: Long, carForm: Form[Car], brands : Seq[(String, String)])
-
 @import helper._
-
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
-
-@main {
-    
+@main {    
     <h1>Edit car</h1>
-    
     @form(routes.Application.update(id)) {
-        
         <fieldset>
-        
-           @select(
+            @select(
                 carForm("brand"), 
                 brands, 
                 '_label -> "Brand", '_default -> "-- Choose a brand --",
                 '_showConstraints -> false
             )
             @inputText(carForm("model"), '_label -> "Car model")
-			@inputText(carForm("price"), '_label -> "Introduced price")
-        
+			@inputText(carForm("price"), '_label -> "Car price")
         </fieldset>
-        
         <div class="actions">
             <input type="submit" value="Update this car" class="btn primary"> or 
             <a href="@routes.Application.list()" class="btn">Cancel</a> 
         </div>
-        
     }
-    
     @form(routes.Application.delete(id), 'class -> "topRight") {
         <input type="submit" value="Delete this car" class="btn danger">
     }
-    
 }

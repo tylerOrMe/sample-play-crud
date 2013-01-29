@@ -31,7 +31,7 @@ object Car {
     get[String]("car.model") ~
     get[Option[Long]]("car.brand_id") ~
     get[Option[Double]]("car.price") map {
-      case id~brand~model~price => Car(id, brand, model, price)
+      case id~model~brand~price => Car(id, model, brand, price)
     }
   }
   

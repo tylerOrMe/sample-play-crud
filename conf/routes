@@ -14,7 +14,7 @@ POST    /cars                  controllers.Application.save
 
 # Edit existing car
 GET     /cars/:id              controllers.Application.edit(id:Long)
-POST    /cars/:id              controllers.Application.update(id:Long)
+POST    /cars/:id/update              controllers.Application.update(id:Long)
 
 # Delete a car
 POST    /cars/:id/delete       controllers.Application.delete(id:Long)

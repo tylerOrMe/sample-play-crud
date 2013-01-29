@@ -56,11 +56,11 @@
                     case (car, brand) => {
                         <tr>
                             <td>
-                                @brand.map(_.name).getOrElse { <em>-</em> }
+                                <a href="@routes.Application.edit(car.id.get)">@brand.map(_.name).getOrElse { <em>-</em> }</a>
                             </td>
                             <td><a href="@routes.Application.edit(car.id.get)">@car.model</a></td>
                             <td>
-                                @car.price.getOrElse { <em>-</em> }
+                                <a href="@routes.Application.edit(car.id.get)">@car.price.getOrElse { <em>-</em> }</a>
                             </td>
                         </tr>
                     }
