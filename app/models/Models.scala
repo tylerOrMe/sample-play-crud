@@ -105,6 +105,7 @@ object Car {
    * @param cars The cars values.
    */
   def update(id: Long, cars: Car) = {
+    println(s"$cars, id $id")
     DB.withConnection { implicit connection =>
       SQL(
         """
@@ -115,7 +116,8 @@ object Car {
       ).on(
         'model -> cars.model,
         'brand_id -> cars.brandId,
-        'price -> cars.price
+        'price -> cars.price,
+        'id -> id
       ).executeUpdate()
     }
   }
@@ -131,7 +133,7 @@ object Car {
         """
           insert into car values (
             (select next value for car_seq), 
-            {model}, {brand_id}, {price}
+            {model},  {price}, {brand_id}
           )
         """
       ).on(

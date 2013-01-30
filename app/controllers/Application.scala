@@ -27,7 +27,7 @@ object Application extends Controller {
     mapping(
       "id" -> ignored(NotAssigned:Pk[Long]),
       "model" -> nonEmptyText,
-      "brand" -> optional(longNumber),
+      "brand" -> optional(of[Long]),
       "price" -> optional(of[Double])
     )(Car.apply)(Car.unapply)
   )
